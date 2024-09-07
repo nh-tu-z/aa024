@@ -8,8 +8,8 @@ export class HttpApiService {
 
   constructor(private http: HttpClient) { }
 
-  public get(url: string, options?: any) {
-    return this.http.get(url, options);
+  public get<T>(url: string, options?: any) {
+    return this.http.get<T>(url, options);
   }
 
   public post(url: string, data: any, options?: any) { 

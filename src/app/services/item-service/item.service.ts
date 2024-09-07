@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpApiService } from '../http-api/http-api.service';
+import { Observable } from 'rxjs';
+import { Item } from '../../models/item';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
-  constructor(private httpApiService: HttpApiService) { }
+  constructor(private http: HttpClient) { }
 
-  public getItems() {
+  public getItems(): Observable<Item[]> {
     const url = '/assets/items.json'
-    return this.httpApiService.get(url);
+    return this.http.get<Item[]>(url);
+  }
+
+  public getItem(): Observable<Item> {
+    const url = '/assets/item.json'
+    return this.http.get<Item>(url);
   }
 }
