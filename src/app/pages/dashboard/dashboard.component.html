@@ -1,4 +1,7 @@
-<p>dashboard works!</p>
+<p>List of items:</p>
 @for (item of items; track item.id) {
     <p>{{ item.name }}</p>
 }
+
+<p>Add item</p>
+<a routerLink="/add-item">Add item button</a>

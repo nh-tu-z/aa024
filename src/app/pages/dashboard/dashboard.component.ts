@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item-service/item.service';
 import { Item } from '../../models/item';
 import { Observable } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
