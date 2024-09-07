@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 // add item page will be reactive form
 @Component({
   selector: 'app-add-item',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './add-item.component.html',
   styleUrl: './add-item.component.scss'
 })

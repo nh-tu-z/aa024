@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item-service/item.service';
 import { Item } from '../../models/item';
-import { Observable } from 'rxjs';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -22,15 +21,6 @@ export class DashboardComponent implements OnInit {
     this.itemService.getItems().subscribe({
       next: (items) => {
         this.items = items;
-      },
-      error: (err: any) => {
-        console.log(err);
-      }
-    });
-
-    this.itemService.getItem().subscribe({
-      next: (res) => {
-        this.item = res;
       },
       error: (err: any) => {
         console.log(err);

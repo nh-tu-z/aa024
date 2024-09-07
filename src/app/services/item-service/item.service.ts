@@ -16,7 +16,8 @@ export class ItemService {
     return this.http.get<Item[]>(url);
   }
 
-  public getItem(): Observable<Item> {
+  public getItem(id: string): Observable<Item> {
+    // TODO: id will be used to call api
     const url = '/assets/item.json'
     return this.http.get<Item>(url);
   }
