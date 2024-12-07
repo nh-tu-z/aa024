@@ -5,8 +5,14 @@ import { AddItemComponent } from './pages/add-item/add-item.component';
 import { EditItemComponent } from './pages/edit-item/edit-item.component';
 import { LoginComponent } from './pages/login/login.component';
 import { authenticationGuard } from './guard/authentication.guard';
+import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
+    {
+        title: 'Home',
+        path: '',
+        component: HomeComponent
+    },
     {
         title: 'Login',
         path: 'login',
