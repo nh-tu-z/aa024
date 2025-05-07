@@ -1,19 +1,19 @@
 import { createReducer, on } from '@ngrx/store';
 import { login, logout } from '../actions/user.actions';
 
-export type User = {
+export type UserState = {
     userName: string,
     email: string,
     token: string
 }
 
-export const initialUserState: User = {
+export const initialUserState: UserState = {
     userName: '',
     email: '',
     token: ''
 }
 export const userReducer = createReducer(
-    initialUserState, 
+    initialUserState,
     on(login, (user, { userName, password }) => {
         console.log(user)
         console.log(userName)

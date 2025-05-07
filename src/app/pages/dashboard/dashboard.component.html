@@ -1,10 +1,4 @@
 <p>List of items:</p>
-@for (item of items; track item.id) {
-    <p>{{ item.name }}</p>
-    <button routerLink="/edit-item/{{ item.id }}">Edit {{ item.name }}</button>
-}
-
-<p>Add item</p>
-<a routerLink="/add-item">Add item button</a>
-
-
+<div class="flex flex-col gap-y-5">
+    <app-product-grid [items]="items"></app-product-grid>
+</div>

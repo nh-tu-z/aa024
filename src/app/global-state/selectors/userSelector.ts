@@ -1,13 +1,10 @@
 import { createSelector } from "@ngrx/store";
-import { User } from "../reducers/user.reducer";
-
-export interface AppState {
-    user: User;
-}
+import { UserState } from "../reducers/user.reducer";
+import { AppState } from "../reducers";
 
 export const selectedUser = (state: AppState) => state.user;
 
 export const selectFeatureCount = createSelector(
     selectedUser,
-    (user: User) => user
-  );
+    (user: UserState) => user
+);

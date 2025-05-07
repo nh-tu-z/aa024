@@ -1,36 +1,37 @@
-<!-- <mat-sidenav-container class="navbar">
-    <mat-sidenav mode="side" position="start" opened>Home</mat-sidenav>
-    <mat-sidenav-content>
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
-</mat-sidenav-container> -->
 <mat-toolbar color="primary">
-    <a class="title" href="/">{{ title }}</a>
-  
-    <div class="toolbar-spacer"></div>
-  
-    <a mat-button [routerLink]="['profile']">Profile</a>
-  
-    @if (!loginDisplay) {
-    <button mat-raised-button [matMenuTriggerFor]="loginMenu">Login</button>
-    }
-    <mat-menu #loginMenu="matMenu">
-      <button mat-menu-item (click)="loginRedirect()">Login using Redirect</button>
-      <button mat-menu-item (click)="loginPopup()">Login using Popup</button>
-    </mat-menu>
-  
-    @if (loginDisplay) {
-    <button mat-raised-button [matMenuTriggerFor]="logoutMenu">Logout</button>
-    }
-    <mat-menu #logoutMenu="matMenu">
-      <button mat-menu-item (click)="logout()">Logout using Redirect</button>
-      <button mat-menu-item (click)="logout(true)">Logout using Popup</button>
-    </mat-menu>
-  
-  </mat-toolbar>
-  <div class="container">
-    <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
-    @if (!false) {
-    <router-outlet></router-outlet>
-    }
-  </div>
+  <a class="title" href="/">{{ title }}</a>
+
+  <div class="w-10"></div>
+
+
+  @if (!loginDisplay) {
+  <button mat-raised-button [matMenuTriggerFor]="loginMenu">Login</button>
+  }
+  <mat-menu #loginMenu="matMenu">
+    <button mat-menu-item (click)="loginRedirect()">Login using Redirect</button>
+    <button mat-menu-item (click)="loginRedirect()">Login using Redirect</button>
+    <button mat-menu-item [routerLink]="['/login']">Login</button>
+    <button mat-menu-item [routerLink]="['/register']">Register</button>
+  </mat-menu>
+
+  @if (loginDisplay) {
+  <button mat-raised-button [matMenuTriggerFor]="logoutMenu">Logout</button>
+  }
+  <mat-menu #logoutMenu="matMenu">
+    <button mat-menu-item (click)="logout()">Logout using Redirect</button>
+    <button mat-menu-item (click)="logout(true)">Logout using Popup</button>
+  </mat-menu>
+
+  <div class="w-10"></div>
+
+  <a mat-button [routerLink]="['/dashboard']">Dashboard</a>
+
+  <a mat-button [routerLink]="['/cart']">Cart</a>
+
+</mat-toolbar>
+<div class="">
+  <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
+  @if (!false) {
+  <router-outlet class="p-2"></router-outlet>
+  }
+</div>
