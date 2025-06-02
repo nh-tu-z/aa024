@@ -13,6 +13,7 @@ export const routes: Routes = [
     {
         title: 'Home',
         path: '',
+        // todo: using lazy load component
         component: HomeComponent
     },
     {
@@ -35,6 +36,7 @@ export const routes: Routes = [
         title: 'Cart',
         path: 'cart',
         component: CartComponent,
+        canActivate: [authenticationGuard]
     },
     {
         title: 'Add Item',

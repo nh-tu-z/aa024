@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
         const userDataJson = JSON.parse(userData)
         if (this.user.password === userDataJson['password']) {
           this.loginSuccess = true
+          this.store.dispatch(login({ userName: userDataJson['username'], password: userDataJson['password'] }))
           setTimeout(() => { this.router.navigate(['/dashboard']); }, 5000)
         }
       }
