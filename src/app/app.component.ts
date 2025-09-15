@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterLink} from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { MsalService, MsalModule, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
 import { AuthenticationResult, InteractionStatus, PopupRequest, RedirectRequest, EventMessage, EventType } from '@azure/msal-browser';
@@ -19,7 +19,7 @@ import { subscribe } from 'diagnostics_channel';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Angular 17 Sample - MSAL Angular v3';
+  title = 'eCommerce';
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
 
@@ -27,7 +27,7 @@ export class AppComponent {
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.authService.handleRedirectObservable().subscribe();
@@ -46,7 +46,7 @@ export class AppComponent {
           this.setLoginDisplay();
         }
       });
-    
+
     this.msalBroadcastService.inProgress$
       .pipe(
         filter((status: InteractionStatus) => status === InteractionStatus.None),
@@ -55,7 +55,7 @@ export class AppComponent {
       .subscribe(() => {
         this.setLoginDisplay();
         this.checkAndSetActiveAccount();
-      })     
+      })
   }
 
   setLoginDisplay() {
@@ -63,7 +63,7 @@ export class AppComponent {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
   }
 
-  checkAndSetActiveAccount(){
+  checkAndSetActiveAccount() {
     /**
      * If no active account set but there are accounts signed in, sets first account to active account
      * To use active account set here, subscribe to inProgress$ first in your component
@@ -78,24 +78,24 @@ export class AppComponent {
   }
 
   loginRedirect() {
-    if (this.msalGuardConfig.authRequest){
-      this.authService.loginRedirect({...this.msalGuardConfig.authRequest} as RedirectRequest);
+    if (this.msalGuardConfig.authRequest) {
+      this.authService.loginRedirect({ ...this.msalGuardConfig.authRequest } as RedirectRequest);
     } else {
       this.authService.loginRedirect();
     }
   }
 
   loginPopup() {
-    if (this.msalGuardConfig.authRequest){
-      this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest)
+    if (this.msalGuardConfig.authRequest) {
+      this.authService.loginPopup({ ...this.msalGuardConfig.authRequest } as PopupRequest)
         .subscribe((response: AuthenticationResult) => {
           this.authService.instance.setActiveAccount(response.account);
         });
-      } else {
-        this.authService.loginPopup()
-          .subscribe((response: AuthenticationResult) => {
-            this.authService.instance.setActiveAccount(response.account);
-      });
+    } else {
+      this.authService.loginPopup()
+        .subscribe((response: AuthenticationResult) => {
+          this.authService.instance.setActiveAccount(response.account);
+        });
     }
   }
 

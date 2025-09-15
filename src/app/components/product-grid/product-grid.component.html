@@ -1,0 +1,40 @@
+<mat-grid-list class="bg-slate-300" cols="5" rowHeight="2:1">
+    @for (item of items; track item.id) {
+    <mat-grid-tile>
+        <div class="flex flex-col items-center justify-start gap-x-2">
+            <img src="assets/images/default-img.jpg" class="w-20 h-20" alt="Default image">
+            <div class="flex justify-between items-center gap-x-5 m-2">
+                <div class="flex flex-col items-start justify-start">
+                    <div>{{ item.name }}</div>
+                    <div>{{ item.desc }}</div>
+                    <ng-container *ngIf="cartItems$ | async as cartItems">
+                        <div>Stock: {{ getStock(item.id, item.stock, cartItems) }}</div>
+                    </ng-container>
+                    <div>Price: {{ item.price }}</div>
+                </div>
+                <div class="flex flex-col justify-start gap-y-2">
+                    <input [value]="getInputValue(item.id)" (input)="updateQuantity(item.id, $event)" type="number"
+                        min="1">
+                    <ng-container *ngIf="cartItems$ | async as cartItems">
+                        <ng-container *ngIf="isInCart(cartItems, item.id); else addToCart">
+                            <ng-container
+                                *ngTemplateOutlet="removeFromCartBtn; context: { $implicit: item }"></ng-container>
+                        </ng-container>
+                        <ng-template #addToCart>
+                            <ng-container *ngTemplateOutlet="addToCartBtn; context: { $implicit: item }"></ng-container>
+                        </ng-template>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </mat-grid-tile>
+    }
+</mat-grid-list>
+
+<ng-template #addToCartBtn let-item>
+    <button class="border-black border-2 rounded p-2" (click)="addToCart(item)">Add to cart</button>
+</ng-template>
+
+<ng-template #removeFromCartBtn let-item>
+    <button class="border-black border-2 rounded p-2" (click)="removeFromCart(item.id)">Remove from cart</button>
+</ng-template>

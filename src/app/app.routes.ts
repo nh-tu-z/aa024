@@ -6,11 +6,14 @@ import { EditItemComponent } from './pages/edit-item/edit-item.component';
 import { LoginComponent } from './pages/login/login.component';
 import { authenticationGuard } from './guard/authentication.guard';
 import { HomeComponent } from './pages/home/home.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 export const routes: Routes = [
     {
         title: 'Home',
         path: '',
+        // todo: using lazy load component
         component: HomeComponent
     },
     {
@@ -19,9 +22,20 @@ export const routes: Routes = [
         component: LoginComponent
     },
     {
+        title: 'Register',
+        path: 'register',
+        component: RegisterComponent
+    },
+    {
         title: 'Dashboard',
         path: 'dashboard',
         component: DashboardComponent,
+        canActivate: [authenticationGuard]
+    },
+    {
+        title: 'Cart',
+        path: 'cart',
+        component: CartComponent,
         canActivate: [authenticationGuard]
     },
     {

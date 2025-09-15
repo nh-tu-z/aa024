@@ -1,3 +1,9 @@
+## Todo: Firebase for deployment
+
+## Todo: Use other UI template
+
+https://tailadmin.com/react
+
 # Aa2024
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.

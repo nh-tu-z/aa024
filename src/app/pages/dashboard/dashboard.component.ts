@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item-service/item.service';
 import { Item } from '../../models/item';
 import { RouterLink } from '@angular/router';
+import { ProductGridComponent } from '../../components/product-grid/product-grid.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterLink],
+  imports: [ProductGridComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
